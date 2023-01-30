@@ -10,7 +10,7 @@
 				</div>
 				<div class="col-md-12" style="margin-top:10px;">
 					<div class="table-responsive">
-						<table class="table table-bordered" id="tbl_pegawai">
+						<table class="table table-bordered" id="tbl_pegawai" style="font-size:12px;">
 							<thead>
 								<tr>
 									<th class="text-uppercase text-center" style="width:150px;">Kode Pegawai</th>
@@ -51,7 +51,7 @@
 
 <script type="text/javascript">
 $(function(){
-	$('#tbl_produk').DataTable({
+	$('#tbl_pegawai').DataTable({
 		'ordering':false
 	});
 });
