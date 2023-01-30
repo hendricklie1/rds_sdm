@@ -15,6 +15,14 @@ $user = $crud->getDataWhere('pegawai',array('id'=>$this->session->userdata('id_p
 			<input type="hidden" name="id_pegawai value="<?php echo $user['id'];?>">
 			<div class="row">
 				<div class="col-md-2">
+					<label class="text-uppercase">Nip</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="nip" value="<?php echo $user['nip'];?>">
+				</div>
+			</div>
+			<div class="row" style="margin-top:10px;">
+				<div class="col-md-2">
 					<label class="text-uppercase">Nama</label>
 				</div>
 				<div class="col-md-8">
@@ -23,11 +31,11 @@ $user = $crud->getDataWhere('pegawai',array('id'=>$this->session->userdata('id_p
 			</div>
 			<div class="row" style="margin-top:10px;">
 				<div class="col-md-2">
-					<label class="text-uppercase">Gender</label>
+					<label class="text-uppercase">Jenis Kelamin</label>
 				</div>
 				<div class="col-md-8">
-					<label class="radio-inline"><input type="radio" name="gender" value="pria" <?php if($user['gender'] == 'pria'){echo 'checked';}?>>Pria</label>
-					<label class="radio-inline"><input type="radio" name="gender" value="wanita" <?php if($user['gender'] == 'wanita'){echo 'checked';}?>>Wanita</label>
+					<label class="radio-inline"><input type="radio" name="gender" value="pria" <?php if($user['jenis_kel'] == 'pria'){echo 'checked';}?>>Pria</label>
+					<label class="radio-inline"><input type="radio" name="gender" value="wanita" <?php if($user['jenis_kel'] == 'wanita'){echo 'checked';}?>>Wanita</label>
 				</div>
 			</div>
 			<div class="row" style="margin-top:15px;">
@@ -35,7 +43,32 @@ $user = $crud->getDataWhere('pegawai',array('id'=>$this->session->userdata('id_p
 					<label class="text-uppercase">Tanggal Lahir</label>
 				</div>
 				<div class="col-md-3">
-					<input type="text" class="form-control datepicker" name="tgllahir" value="<?php if($user['tgllahir']!=null){echo date('d-m-Y',strtotime($user['tgllahir']));}?>" autocomplete="off">
+					<input type="text" class="form-control datepicker" name="tgllahir" value="<?php if($user['tanggal_lahir']!=null){echo date('d-m-Y',strtotime($user['tanggal_lahir']));}?>" autocomplete="off">
+				</div>
+			</div>
+			<div class="row" style="margin-top:15px;">
+				<div class="col-md-2">
+					<label class="text-uppercase">Agama</label>
+				</div>
+				<div class="col-md-8">
+				<input type="text" class="form-control" name="agama" value="<?php echo $user['agama'];?>">
+				</div>
+			</div>
+			<div class="row" style="margin-top:10px;">
+				<div class="col-md-2">
+					<label class="text-uppercase">Status</label>
+				</div>
+				<div class="col-md-8">
+					<label class="radio-inline"><input type="radio" name="status" value="aktif" <?php if($user['status'] == 'aktif'){echo 'checked';}?>>aktif</label>
+					<label class="radio-inline"><input type="radio" name="status" value="tidak aktif" <?php if($user['status'] == 'tidak aktif'){echo 'checked';}?>>tidak aktif</label>
+				</div>
+			</div>
+			<div class="row" style="margin-top:15px;">
+				<div class="col-md-2">
+					<label class="text-uppercase">Pendidikan</label>
+				</div>
+				<div class="col-md-8">
+				<input type="text" class="form-control" name="pendidikan" value="<?php echo $user['pendidikan'];?>">
 				</div>
 			</div>
 			<div class="row" style="margin-top:15px;">
@@ -44,22 +77,6 @@ $user = $crud->getDataWhere('pegawai',array('id'=>$this->session->userdata('id_p
 				</div>
 				<div class="col-md-8">
 					<textarea class="form-control" name="alamat" style="height:100px;resize:none;"><?php echo $user['alamat'];?></textarea>
-				</div>
-			</div>
-			<div class="row" style="margin-top:15px;">
-				<div class="col-md-2">
-					<label class="text-uppercase">E-Mail</label>
-				</div>
-				<div class="col-md-8">
-					<input type="email" class="form-control" name="email" value="<?php echo $user['email'];?>">
-				</div>
-			</div>
-			<div class="row" style="margin-top:15px;">
-				<div class="col-md-2">
-					<label class="text-uppercase">No. HP / No. Telp</label>
-				</div>
-				<div class="col-md-5">
-					<input type="text" class="form-control" name="nohp" value="<?php echo $user['nohp'];?>">
 				</div>
 			</div>
 			<div class="row" style="margin-top:20px;">
