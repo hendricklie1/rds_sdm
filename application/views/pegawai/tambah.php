@@ -36,6 +36,14 @@
 					<label class="radio-inline"><input type="radio" name="gender" value="wanita" <?php if($user['jenis_kel'] == 'wanita'){echo 'checked';}?>>Wanita</label>
 				</div>
 			</div>
+            <div class="col-md-12" style="margin-top:10px;">
+						<div class="col-md-2">
+							<label class="text-uppercase">Tempat Lahir</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="ttl" required>
+						</div>
+					</div>
             <div class="row" style="margin-top:15px;">
 				<div class="col-md-2">
 					<label class="text-uppercase">Tanggal Lahir</label>

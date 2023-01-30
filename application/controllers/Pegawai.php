@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Invoice extends CI_Controller {
+class pegawai extends CI_Controller {
 
 	public function index(){
 		// Cek login
@@ -24,8 +24,8 @@ class Invoice extends CI_Controller {
 		if($this->session->userdata('sts_login') != true){
 			redirect('Welcome');
 		}else{
-			$data['title'] = 'Invoice';
-			$data['sub_title'] = 'Buat Invoice';
+			$data['title'] = 'Data Pegawai';
+			$data['sub_title'] = 'Input Data Pegawao';
 			$data['breadcrumb'] = '
 				<li><a href="#"><i class="fa fa-dashboard"></i> Main</a></li>
         		<li class="active">Insert Data Pegawai</li>
