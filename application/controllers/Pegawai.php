@@ -14,8 +14,8 @@ class Invoice extends CI_Controller {
 				<li><a href="#"><i class="fa fa-dashboard"></i> Main</a></li>
         		<li class="active">Pegawai</li>
 			';
-			$data['invoice'] = $this->crud->selectAllOrderby('invoice','id','asc')->result();
-			$this->template->view('invoice/index',$data);
+			$data['pegawai'] = $this->crud->selectAllOrderby('pegawai','id','asc')->result();
+			$this->template->view('pegawai/index',$data);
 		}
 	}
 
@@ -28,21 +28,21 @@ class Invoice extends CI_Controller {
 			$data['sub_title'] = 'Buat Invoice';
 			$data['breadcrumb'] = '
 				<li><a href="#"><i class="fa fa-dashboard"></i> Main</a></li>
-        		<li class="active">Buat Invoice</li>
+        		<li class="active">Insert Data Pegawai</li>
 			';
-			$this->template->view('invoice/tambah',$data);
+			$this->template->view('pegawai/tambah',$data);
 		}
 	}
 
-	public function listProduk(){
+	public function listPegawai(){
 		$sql_listkatagori = '
-			SELECT DISTINCT a.katagori AS kategoriproduk
-			FROM produk a
-			ORDER BY a.katagori ASC
+			SELECT DISTINCT a.pegawai AS pegawai
+			FROM pegawai
+			ORDER BY a.pegarai ASC
 		';
-		$data['listkatagori'] = $this->crud->getDataQuery($sql_listkatagori)->result();
+		$data['listPegawai'] = $this->crud->getDataQuery($sql_listPegawai)->result();
 		$data['crud'] = $this->crud;
-		$this->load->view('invoice/listproduk',$data);
+		$this->load->view('pegawai/listproduk',$data);
 	}
 
 	public function saveData(){
