@@ -6,7 +6,7 @@
 			</div>
 			<div class="box-body">
 				<div class="col-md-12" style="margin-bottom: 10px;">
-					<a class="btn btn-default" href="<?php echo base_url();?>main/pegawai/tambah">Tambah Pegawai</a>
+					<a class="btn btn-default" href="<?php echo base_url();?>pegawai/datapegawai/tambah"><i class="fa fa-plus"></i> Tambah Pegawai</a>
 				</div>
 				<div class="col-md-12" style="margin-top:10px;">
 					<div class="table-responsive">

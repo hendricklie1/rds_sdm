@@ -1,18 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class pegawai extends CI_Controller {
+class DataPegawai extends CI_Controller {
 
 	public function index(){
 		// Cek login
 		if($this->session->userdata('sts_login') != true){
 			redirect('Welcome');
 		}else{
-			$data['title'] = 'Pegawai';
-			$data['sub_title'] = 'List Pegawai';
+			$data['title'] = 'Data Pegawai';
+			$data['sub_title'] = 'List';
 			$data['breadcrumb'] = '
 				<li><a href="#"><i class="fa fa-dashboard"></i> Main</a></li>
-        		<li class="active">Pegawai</li>
+        		<li>Data Karyawan</li>
+				<li class="active">Data Karyawan</li>
 			';
 			$data['pegawai'] = $this->crud->selectAllOrderby('pegawai','id','asc')->result();
 			$this->template->view('pegawai/index',$data);
@@ -25,7 +26,7 @@ class pegawai extends CI_Controller {
 			redirect('Welcome');
 		}else{
 			$data['title'] = 'Data Pegawai';
-			$data['sub_title'] = 'Input Data Pegawao';
+			$data['sub_title'] = 'Input';
 			$data['breadcrumb'] = '
 				<li><a href="#"><i class="fa fa-dashboard"></i> Main</a></li>
         		<li class="active">Insert Data Pegawai</li>
@@ -50,12 +51,9 @@ class pegawai extends CI_Controller {
 		$input = $this->input;
 
 		// Form validation
-		$form->set_rules('no_meja','<b class="text-uppercase">No. Meja</b>','required');
+		$form->set_rules('kode','<b class="text-uppercase">KODE</b>','required|is_unique[pegawai.kode]');
 		$form->set_rules('nm_customer','<b class="text-uppercase">Nama Customer</b>','required');
-		$form->set_rules('list_produk','<b class="text-uppercase">Produk</b>','required');
-		$form->set_rules('sub_total','<b>Sub Total</b>','required');
-		$form->set_rules('grand_total','<b>Grand Total</b>','required');
-		$form->set_rules('nm_pelayan','<b>Nama Pelayan</b>','required');
+		
 
 		if($form->run() == FALSE){
 			$respon = array(
@@ -64,51 +62,7 @@ class pegawai extends CI_Controller {
 			);
 			//print_r($respon);
 		}else{
-			$invoice = array(
-				'nomor'=>'INV'.date('ymdhis'),
-				'no_meja'=>$input->post('no_meja'),
-				'nama_customer'=>$input->post('nm_customer'),
-				'sub_total'=>$input->post('sub_total'),
-				'diskon_persen'=>$input->post('diskon_persen'),
-				'diskon_amount'=>$input->post('diskon_amount'),
-				'total_amount'=>$input->post('grand_total'),
-				'input_user'=>$input->post('id_user'),
-				'input_tglwaktu'=>date('Y-m-d H:i:s'),
-				'tgl_invoice'=>date('Y-m-d H:i:s'),
-				'nama_pelayan'=>$input->post('nm_pelayan'),
-				'catatan'=>htmlspecialchars($input->post('catatan'))
-			);
-
-			$d_invoice = $input->post('list_produk');
-			//print_r($invoice);
-			//print_r($d_invoice);
-
-			$respon = $this->crud->insertDataSave('invoice',$invoice);
-
-			if($respon['code'] == 0){
-				$list_produk = (array)json_decode($input->post('list_produk'),true);
-				foreach($list_produk as $list => $l){
-					$item = $this->crud->getDataWhere('produk',array('id'=>$l['id_produk']))->row_array();
-					$d_invoice = array(
-						'id_invoice'=>$respon['last_id'],
-						'id_produk'=>$item['id'],
-						'kode_produk'=>$item['kode'],
-						'nama_produk'=>strtoupper($item['nama']),
-						'satuan_produk'=>$item['satuan'],
-						'jumlah'=>$l['qty_produk'],
-						'harga'=>$l['harga_produk'],
-						'subtotal_amount'=>$l['subtotal_produk']
-					);
-
-					$res_d_invoice = $this->crud->insertDataSave('d_invoice',$d_invoice);
-
-					if($res_d_invoice['code'] == 0){
-						$w_item = array('id'=>$item['id']);
-						$d_item = array('jumlah'=>$item['jumlah']-$d_invoice['jumlah']);
-						$this->crud->updData('produk',$w_item,$d_item);
-					}
-				}
-			}
+			
 		}
 
 		echo json_encode($respon);

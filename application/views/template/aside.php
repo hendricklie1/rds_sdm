@@ -44,7 +44,7 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="#"><i class="fa fa-angle-right"></i> <span>Data Pegawai</span></a></li>
+          <li><a href="<?php echo base_url();?>pegawai/datapegawai"><i class="fa fa-angle-right"></i> <span>Data Pegawai</span></a></li>
           <li><a href="#"><i class="fa fa-angle-right"></i> <span>Kehadiran</span></a></li>
         </ul>
       </li>
